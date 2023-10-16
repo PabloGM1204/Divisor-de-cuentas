@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/cuenta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="¿Cuanto es la cuenta?"
+        android:inputType="numberDecimal"/>
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:paddingBottom="16dp"
+            android:id="@+id/rb_servicio_excelente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Excelente (20%)"/>
+        <RadioButton
+            android:paddingBottom="16dp"
+            android:id="@+id/rb_servicio_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal (10%)"/>
+        <RadioButton
+            android:paddingBottom="16dp"
+            android:id="@+id/rb_servicio_malo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Malo (0%)"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/cantidad_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <NumberPicker
+        android:id="@+id/num_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/boton_calcular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calcular"/>
+
+    <TextView
+        android:id="@+id/pagar_persona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
