@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CalcularPrecios</string>
+    <string name="cuanto_es_la_cuenta">¿Cuanto es la cuenta?</string>
+    <string name="total_a_pagar">Total a pagar: %s</string>
+    <string name="excelente_20">Excelente (20%)</string>
+    <string name="normal_10">Normal (10%)</string>
+    <string name="malo_0">Malo (0%)</string>
+    <string name="calcular">Calcular</string>
+    <string name="split_result">Cada persona tiene que pagar %s</string>
+    <string name="escriba_su_opini_n">Escriba su opinión</string>
+    <string name="suffix">%s</string>
+    <string name="redondeo">Redondear</string>
 </resources>

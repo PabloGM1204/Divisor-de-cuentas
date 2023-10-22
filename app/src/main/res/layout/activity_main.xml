@@ -1,62 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:id="@+id/linearLayout2"
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/cuenta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="¿Cuanto es la cuenta?"
-        android:inputType="numberDecimal"/>
+
     <RadioGroup
         android:id="@+id/radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/num_picker"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
         <RadioButton
-            android:paddingBottom="16dp"
             android:id="@+id/rb_servicio_excelente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Excelente (20%)"/>
-        <RadioButton
             android:paddingBottom="16dp"
+            android:text="@string/excelente_20" />
+
+        <RadioButton
             android:id="@+id/rb_servicio_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Normal (10%)"/>
-        <RadioButton
             android:paddingBottom="16dp"
+            android:text="@string/normal_10" />
+
+        <RadioButton
             android:id="@+id/rb_servicio_malo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Malo (0%)"/>
+            android:paddingBottom="16dp"
+            android:text="@string/malo_0" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/cantidad_total"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/radio_group"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <NumberPicker
-        android:id="@+id/num_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cuenta"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/cuanto_es_la_cuenta"
+            android:inputType="numberDecimal"
+            app:suffixText="@string/suffix">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cantidad_pagar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/cantidad_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_a_pagar" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/boton_calcular"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Calcular"/>
+        android:layout_marginTop="56dp"
+        android:text="@string/calcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pagar_persona"
+        app:layout_constraintTop_toBottomOf="@+id/num_picker" />
+
+    <NumberPicker
+        android:id="@+id/num_picker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/boton_calcular"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/check"
+        android:layout_width="162dp"
+        android:layout_height="53dp"
+        android:checked="false"
+        android:text="@string/redondeo"
+        app:layout_constraintBottom_toTopOf="@+id/boton_calcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/pagar_persona"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boton_calcular" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

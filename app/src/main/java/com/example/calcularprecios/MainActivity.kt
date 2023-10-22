@@ -1,10 +1,12 @@
 package com.example.calcularprecios
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.calcularprecios.databinding.ActivityMainBinding
 import java.text.NumberFormat
-import java.util.zip.Inflater
+import java.util.Currency;
+import java.util.Locale;
+import kotlin.math.ceil
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,10 +16,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Para que se ponga por defecto
-        binding.radioGroup.check(R.id.rb_servicio_malo)
+        binding.cantidadTotal.text = getString(R.string.total_a_pagar, "")
+        // binding.radioGroup.check(R.id.rb_servicio_malo)
         binding.radioGroup.setOnCheckedChangeListener{_, i ->
-            binding.cantidadTotal.text = formateo(CalcularIncremento(i))
+            binding.cantidadTotal.text = getString(R.string.total_a_pagar, formateo(CalcularIncremento(i)))
         }
+
+        var ctL: Locale = Locale.getDefault()
+        var moneda: Currency = Currency.getInstance(ctL)
+        binding.cuenta.suffixText = moneda.getSymbol(ctL)
+
 
         // Para configurar los valores del number picker
         val picker1 = binding.numPicker
@@ -25,13 +33,28 @@ class MainActivity : AppCompatActivity() {
         picker1.minValue = 1
         picker1.wrapSelectorWheel = false
 
+
+
+        var incremento = 0.0
         // Cuando le demos al botond de calcular
         binding.botonCalcular.setOnClickListener{
             val rbSeleccionado = binding.radioGroup.checkedRadioButtonId
-            var incremento = CalcularIncremento(rbSeleccionado)
+            incremento = CalcularIncremento(rbSeleccionado)
             incremento /= binding.numPicker.value
-            binding.pagarPersona.text = formateo(incremento)
+            // Para redondear hacia la alta
+            incremento = redondeo(incremento)
+            binding.pagarPersona.text = getString(R.string.split_result, formateo(incremento))
         }
+
+    }
+
+    // Para redondear a la alta
+    private fun redondeo(incremento: Double): Double {
+        var incremento1 = incremento
+        if (binding.check.isChecked) {
+            incremento1 = ceil(incremento1)
+        }
+        return incremento1
     }
 
     // Formatea para que sea una moneda dependiendo del los ajustes locales
@@ -55,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 1.2
             }
         }
-        val cuentaAsString = binding.cuenta.text.toString()
+        val cuentaAsString = binding.cantidadPagar.text.toString()
         var cuenta = cuentaAsString.toDouble()
         cuenta *= incremento
         return cuenta

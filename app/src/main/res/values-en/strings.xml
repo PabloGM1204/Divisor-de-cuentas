@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BillCalculate</string>
+    <string name="cuanto_es_la_cuenta">How much is the bill?</string>
+    <string name="total_a_pagar">Total to pay: %s</string>
+    <string name="excelente_20">Perfect (20%)</string>
+    <string name="normal_10">Normal (10%)</string>
+    <string name="malo_0">Bad (0%)</string>
+    <string name="calcular">Calculate</string>
+    <string name="split_result">Each person must pay %s</string>
+    <string name="escriba_su_opini_n">Write your opinion</string>
+    <string name="suffix">%s</string>
+    <string name="redondeo">Round Up</string>
+</resources>
